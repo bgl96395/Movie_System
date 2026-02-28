@@ -20,10 +20,17 @@ body{
 }
 #options{
     display: flex;
-    color: rgb(153, 153, 153);
     gap: 10px;
     margin-right: 20%;
+}
+
+.color{
+    color: rgb(153, 153, 153);
     cursor: pointer;
+}
+
+.color:hover{
+    color: white;
 }
 
 #search_of{
@@ -39,12 +46,14 @@ body{
     align-items: center;
     width: 370px;
     justify-content: space-between;
+    gap:5px
     
 }
 
 #search{
     border: 0;
     background-color: transparent;
+    width: 100%;
 }
 
 input::placeholder{
@@ -54,7 +63,7 @@ input::placeholder{
 
 #login{
     display: flex;
-    color: white;
+    color: rgb(153, 153, 153);
     background-color: rgb(35, 35, 51);
     padding-top: 5px;
     padding-bottom: 5px;
@@ -64,6 +73,10 @@ input::placeholder{
     gap: 10px;
     align-items: center;
     cursor: pointer;
+}
+
+#login:hover{
+    color: white;
 }
 
 #icon{
@@ -80,9 +93,114 @@ input::placeholder{
     background-color: black;
     width: 100%;
     margin-bottom: 0;
+    color: gray;
+}
+
+#soc{
+    display: flex;
+    font-size: 22px;
+    width: 25%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.soci{
+    background-color: rgb(39, 39, 54) !important;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.soci:hover{
+    color: white;
+    background-color: rgb(85, 85, 115) !important;
+}
+
+#foot1{
+    display: flex;
+    width: 12%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: large;
+}
+
+.col:hover{
+    color: white;
+    cursor: pointer;
+}
+
+#foot2{
+    display: flex;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: large;
+}
+
+.col:hover{
+    color: white;
+    cursor: pointer;
+}
+
+#watching{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 30px;
+    width: 43%;
+    margin-top: 40px;
+}
+
+.z{
+    display: flex;
+    gap: 10px;
+    background-color: rgb(31, 27, 27);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.z:hover{
+    cursor: pointer;
+    color: rgb(179, 177, 177);
+    background-color: rgb(48, 45, 45);
+}
+
+.z1{
+    font-size: 30px;
+}
+
+.z2{
+    display: flex;
+    flex-direction: column;
+}
+
+.z3{
+    font-size: 12px;
+}
+
+.z4{
+    font-size: 20px;
+}
+
+#rights{
+    display: flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    font-size: 14px;
 }
 
 #main{
     flex: 1;
 }
+
 

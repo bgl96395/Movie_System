@@ -54,6 +54,7 @@ body{
     border: 0;
     background-color: transparent;
     width: 100%;
+    color: white;
 }
 
 input::placeholder{
@@ -243,4 +244,62 @@ select{
 
 #main{
     flex:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap:20px;
+    padding: 20px;
+}
+
+.card{
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.for_image{
+    position: relative;
+    overflow: hidden;
+}
+
+.for_image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    transition: 0.4s;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.overlay_text{
+    color:white;
+    padding: 10px;
+    font-size: 20px;
+    flex:1;
+}
+
+.overlay_text2{
+    color:white;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.for_image:hover .overlay{
+    opacity: 1;
+    border-radius: 20px;
+}
+
+.card:hover{
+    transform:scale(1.05);
 }

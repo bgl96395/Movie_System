@@ -38,14 +38,14 @@ exports.get_movie_by_id = async (req,res)=>{
 
 exports.create_movies = async (req,res)=>{
     try{
-        const {title,description,release_date,duration,country,genre,raiting} = req.body
-        if(!title || !description || !release_date || !duration || !country || !genre || !raiting){
+        const {title,description,release_date,duration,country,genre,raiting,image} = req.body
+        if(!title || !description || !release_date || !duration || !country || !genre || !raiting || !image){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await movie_collection().insertOne({title,description,release_date,duration,country,genre,raiting})
+        await movie_collection().insertOne({title,description,release_date,duration,country,genre,raiting,image})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +59,7 @@ exports.create_movies = async (req,res)=>{
 exports.update_movie = async (req,res)=>{
     try{
         const movie_id = req.params.id
-        const {title,description,release_date,duration,country,genre,raiting} = req.body
+        const {title,description,release_date,duration,country,genre,raiting,image} = req.body
 
         if(!ObjectId.isValid(movie_id)){
             return res.status(400).json({
@@ -67,7 +67,7 @@ exports.update_movie = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !release_date && !duration && !country && !genre && !raiting){
+        if(!title && !description && !release_date && !duration && !country && !genre && !raiting && !image){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -94,6 +94,9 @@ exports.update_movie = async (req,res)=>{
         }
         if(release_date){
             updating_fileds.release_date = release_date
+        }
+        if(image){
+            updating_fileds.image = image
         }
         
         const movie = await movie_collection().updateOne({_id: new ObjectId(movie_id)}, {$set: updating_fileds})

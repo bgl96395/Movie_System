@@ -1,6 +1,12 @@
+let current_page = 1
+let limit = 6
+let data = []
+
 async function show(){
-    const res = await fetch("/api/movies")
-    let data = await res.json()
+    if(data.length === 0){
+        const res = await fetch("/api/movies")
+        data = await res.json()
+    }
 
     const genre_value = document.getElementById("genre_filter").value
     const country_value = document.getElementById("country_filter").value
@@ -33,7 +39,19 @@ async function show(){
         return genre_match && country_match && year_match && rating_match
     })
 
-    render(filtered)
+    const total_pages = Math.ceil(filtered.length/limit) 
+
+    if(current_page > total_pages){
+        current_page = total_pages || 1
+    }
+
+    const start = (current_page - 1) * limit
+    const paged = filtered.slice(start,start+limit)
+
+    render(paged)
+
+    document.getElementById("prev").disabled = current_page === 1
+    document.getElementById("next").disabled = current_page >= filtered.length
 }
 
 function render(data){
@@ -61,7 +79,24 @@ function render(data){
 }
 
 document.querySelectorAll("#filter select").forEach(select => {
-    select.addEventListener("change",show)
+    select.addEventListener("change",()=>{
+        current_page = 1
+        show()
+    })
+})
+
+document.getElementById("prev").addEventListener("click",()=>{
+    if(current_page > 1){
+        current_page--
+        show()
+    }
+})
+
+document.getElementById("next").addEventListener("click",()=>{
+    if(!document.getElementById("next").disabled){
+        current_page++
+        show()
+    }
 })
 
 show()

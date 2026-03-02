@@ -61,7 +61,7 @@ input::placeholder{
     font-size: 14px;
 }
 
-#login{
+#logout{
     display: flex;
     color: rgb(153, 153, 153);
     background-color: rgb(35, 35, 51);
@@ -75,7 +75,7 @@ input::placeholder{
     cursor: pointer;
 }
 
-#login:hover{
+#logout:hover{
     color: white;
 }
 
@@ -153,7 +153,7 @@ input::placeholder{
     margin-left: auto;
     margin-right: auto;
     gap: 30px;
-    width: 43%;
+    width: 44%;
     margin-top: 40px;
 }
 
@@ -199,8 +199,48 @@ input::placeholder{
     font-size: 14px;
 }
 
-#main{
-    flex: 1;
+#filter{
+    display: flex;
+    padding: 25px;
+    gap: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
+.filt{
+    display: flex;
+    width: 100%;
+    max-width: 1fr;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f7f7f9;
+}
 
+label{
+    font-size: 18px;
+}
+
+select{
+    flex: 1;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.main_header{
+    font-size: 40px;
+    font-weight: bold;
+    margin-left:50px ;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+#main{
+    flex:1;
+}

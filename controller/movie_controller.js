@@ -41,7 +41,6 @@ exports.get_movies = async (req,res) => {
 
         res.status(200).json({movies, total_pages})
     } catch(err){
-        console.error("Server error:", err)
         res.status(500).json({ error:"Database Error" })
     }
 }

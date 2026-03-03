@@ -314,4 +314,5 @@ select{
     margin-bottom: auto;
     padding: 5px;
     font-size: 40px;
+    cursor: pointer;
 }

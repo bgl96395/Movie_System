@@ -1,14 +1,48 @@
 const {ObjectId} = require("mongodb")
 const movie_collection = require("../models/movie_model")
 
-exports.get_movies = async (req,res) =>{
-    try{
-        const movie = await movie_collection().find().toArray()
-        res.status(200).json(movie)
-    }catch{
-        res.status(500).json({
-            error:"Database Error"
-        })
+exports.get_movies = async (req,res) => {
+    try {
+        const {
+            page = 1,
+            limit = 6,
+            genre,
+            country,
+            year,
+            rating
+        } = req.query
+
+        const filter = {}
+
+        if(genre){
+            filter.genre = { $in:[genre] }
+        }
+        if(country){
+            filter.country = { $in:[country] }
+        }
+        if(year){
+            if(year === "before_1980"){
+                filter.release_year = { $lte:1980 }
+            } else {
+                filter.release_year = Number(year)
+            }
+        }
+        if(rating){
+            const [min,max] = rating.split("-").map(Number) 
+            filter.rating = {$gte:min,$lte:max}
+        }
+
+        const limit_num = Number(limit) || 6
+        const skip = (page - 1) * limit_num
+
+        const movies = await movie_collection().find(filter).skip(skip).limit(limit_num).toArray()
+        const total = await movie_collection().countDocuments(filter)
+        const total_pages = Math.ceil(total/limit_num)
+
+        res.status(200).json({movies, total_pages})
+    } catch(err){
+        console.error("Server error:", err)
+        res.status(500).json({ error:"Database Error" })
     }
 }
 
@@ -38,14 +72,14 @@ exports.get_movie_by_id = async (req,res)=>{
 
 exports.create_movies = async (req,res)=>{
     try{
-        const {title,description,release_date,duration,country,genre,raiting,image} = req.body
-        if(!title || !description || !release_date || !duration || !country || !genre || !raiting || !image){
+        const {title,description,release_year,duration,country,genre,rating,image} = req.body
+        if(!title || !description || !release_year || !duration || !country || !genre || !rating || !image){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await movie_collection().insertOne({title,description,release_date,duration,country,genre,raiting,image})
+        await movie_collection().insertOne({title,description,release_year,duration,country,genre,rating,image})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +93,7 @@ exports.create_movies = async (req,res)=>{
 exports.update_movie = async (req,res)=>{
     try{
         const movie_id = req.params.id
-        const {title,description,release_date,duration,country,genre,raiting,image} = req.body
+        const {title,description,release_year,duration,country,genre,rating,image} = req.body
 
         if(!ObjectId.isValid(movie_id)){
             return res.status(400).json({
@@ -67,7 +101,7 @@ exports.update_movie = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !release_date && !duration && !country && !genre && !raiting && !image){
+        if(!title && !description && !release_year && !duration && !country && !genre && !rating && !image){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -89,11 +123,11 @@ exports.update_movie = async (req,res)=>{
         if(genre){
             updating_fileds.genre = genre
         }
-        if(raiting){
-            updating_fileds.raiting = raiting
+        if(rating){
+            updating_fileds.rating = rating
         }
-        if(release_date){
-            updating_fileds.release_date = release_date
+        if(release_year){
+            updating_fileds.release_year = release_year
         }
         if(image){
             updating_fileds.image = image

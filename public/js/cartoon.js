@@ -27,10 +27,10 @@ async function show(){
         params.append("rating",rating_value)
     }
 
-    const res = await fetch(`/api/movies?${params}`)
+    const res = await fetch(`/api/cartoons?${params}`)
     const data = await res.json()
 
-    render(data.movies)
+    render(data.cartoons)
 
     total_pages = data.total_pages || 1
 
@@ -39,31 +39,31 @@ async function show(){
 }
 
 function render(data){
-    const movies = document.getElementById("main")
-    movies.innerHTML = ""
+    const cartoons = document.getElementById("main")
+    cartoons.innerHTML = ""
 
     if(data.length === 0){
-        movies.innerHTML = "<h2>No Movies Found</h2>"
+        cartoons.innerHTML = "<h2>No Cartoons Found</h2>"
         return
     }
 
-    data.forEach(movie => {
-        const image = movie.image || "/img/default.avif"
+    data.forEach(cartoon => {
+        const image = cartoon.image || "/img/default.avif"
         const div = document.createElement("div")
 
         div.classList.add("card")
         div.innerHTML = `
             <div class="for_image">
-                <img src="${image}" alt="${movie.title}">
+                <img src="${image}" alt="${cartoon.title}">
                 <div class="overlay">
-                    <div class="overlay_text">rating: <b>${movie.rating}</b></div>
-                    <div class="overlay_text2">country: <b>${movie.country.join(", ")}</b></div>
-                    <div class="overlay_text2">genre: <b>${movie.genre.join(", ")}</b></div>
-                    <div class="overlay_text2">release year: <b>${movie.release_year}</b></div>
+                    <div class="overlay_text">rating: <b>${cartoon.rating}</b></div>
+                    <div class="overlay_text2">country: <b>${cartoon.country.join(", ")}</b></div>
+                    <div class="overlay_text2">genre: <b>${cartoon.genre.join(", ")}</b></div>
+                    <div class="overlay_text2">release year: <b>${cartoon.release_year}</b></div>
                 </div>
             </div>
         `
-        movies.appendChild(div)
+        cartoons.appendChild(div)
     })
 }
 
@@ -92,50 +92,50 @@ show()
 
 async function show_by_name_or_id() {
     const val = document.getElementById("search").value
-    const movies = document.getElementById("main")
-    movies.innerHTML = ""
+    const cartoons = document.getElementById("main")
+    cartoons.innerHTML = ""
 
     if(!val) {
         show()
         return
     }
 
-    const res = await fetch("/api/movies?page=1&limit=1000")
+    const res = await fetch("/api/cartoons?page=1&limit=1000")
     const data = await res.json()
 
-    const movies_data = data.movies || []
+    const cartoons_data = data.cartoons || []
 
-    if(movies_data.length === 0){
-        movies.innerHTML = "<h2>Movies Not Found</h2>"
+    if(cartoons_data.length === 0){
+        cartoons.innerHTML = "<h2>Movies Not Found</h2>"
         return
     }
 
-    const filtered = movies_data.filter(movie =>
-        movie._id.includes(val) || movie.title.toLowerCase().includes(val.toLowerCase())
+    const filtered = cartoons_data.filter(cartoon =>
+        cartoon._id.includes(val) || cartoon.title.toLowerCase().includes(val.toLowerCase())
     )
 
     if(filtered.length === 0){
-        movies.innerHTML = "<h2>Movies Not Found</h2>"
+        cartoons.innerHTML = "<h2>Movies Not Found</h2>"
         return
     }
 
-    filtered.forEach(movie => {
-        const image = movie.image || "/img/default.avif"
+    filtered.forEach(cartoon => {
+        const image = cartoon.image || "/img/default.avif"
         const div = document.createElement("div")
 
         div.classList.add("card")
         div.innerHTML = `
             <div class="for_image">
-                <img src="${image}" alt="${movie.title}">
+                <img src="${image}" alt="${cartoon.title}">
                 <div class="overlay">
-                    <div class="overlay_text">rating: <b>${movie.rating}</b></div>
-                    <div class="overlay_text2">country: <b>${movie.country.join(", ")}</b></div>
-                    <div class="overlay_text2">genre: <b>${movie.genre.join(", ")}</b></div>
-                    <div class="overlay_text2">release year: <b>${movie.release_year}</b></div>
+                    <div class="overlay_text">rating: <b>${cartoon.rating}</b></div>
+                    <div class="overlay_text2">country: <b>${cartoon.country.join(", ")}</b></div>
+                    <div class="overlay_text2">genre: <b>${cartoon.genre.join(", ")}</b></div>
+                    <div class="overlay_text2">release year: <b>${cartoon.release_year}</b></div>
                 </div>
             </div>
         `
-        movies.appendChild(div)
+        cartoons.appendChild(div)
     })
 }
 

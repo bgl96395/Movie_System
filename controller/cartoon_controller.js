@@ -1,14 +1,47 @@
 const {ObjectId} = require("mongodb")
 const cartoon_collection = require("../models/cartoon_model")
 
-exports.get_cartoons = async (req,res) =>{
-    try{
-        const cartoon = await cartoon_collection().find().toArray()
-        res.status(200).json(cartoon)
-    }catch{
-        res.status(500).json({
-            error:"Database Error"
-        })
+exports.get_cartoons = async (req,res) => {
+    try {
+        const {
+            page = 1,
+            limit = 6,
+            genre,
+            country,
+            year,
+            rating
+        } = req.query
+
+        const filter = {}
+
+        if(genre){
+            filter.genre = { $in:[genre] }
+        }
+        if(country){
+            filter.country = { $in:[country] }
+        }
+        if(year){
+            if(year === "before_1980"){
+                filter.release_year = { $lte:1980 }
+            } else {
+                filter.release_year = Number(year)
+            }
+        }
+        if(rating){
+            const [min,max] = rating.split("-").map(Number) 
+            filter.rating = {$gte:min,$lte:max}
+        }
+
+        const limit_num = Number(limit) || 6
+        const skip = (page - 1) * limit_num
+
+        const cartoons = await cartoon_collection().find(filter).skip(skip).limit(limit_num).toArray()
+        const total = await cartoon_collection().countDocuments(filter)
+        const total_pages = Math.ceil(total/limit_num)
+
+        res.status(200).json({cartoons, total_pages})
+    } catch(err){
+        res.status(500).json({ error:"Database Error" })
     }
 }
 
@@ -38,14 +71,14 @@ exports.get_cartoon_by_id = async (req,res)=>{
 
 exports.create_cartoon = async (req,res)=>{
     try{
-        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style} = req.body
-        if(!title || !description || !release_year || !number_of_episods || !country || !genre || !rating || !main_characters || !style){
+        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style,image} = req.body
+        if(!title || !description || !release_year || !number_of_episods || !country || !genre || !rating || !main_characters || !style || !image){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await cartoon_collection().insertOne({title,description,release_year,number_of_episods,country,genre,rating,main_characters,style})
+        await cartoon_collection().insertOne({title,description,release_year,number_of_episods,country,genre,rating,main_characters,style,image})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +92,7 @@ exports.create_cartoon = async (req,res)=>{
 exports.update_cartoon = async (req,res)=>{
     try{
         const cartoon_id = req.params.id
-        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style} = req.body
+        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style,image} = req.body
 
         if(!ObjectId.isValid(cartoon_id)){
             return res.status(400).json({
@@ -67,7 +100,7 @@ exports.update_cartoon = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !release_year && !number_of_episods && !country && !genre && !rating && !main_characters && !style){
+        if(!title && !description && !release_year && !number_of_episods && !country && !genre && !rating && !main_characters && !style && !image){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -81,7 +114,7 @@ exports.update_cartoon = async (req,res)=>{
             updating_fileds.description = description
         }
         if(number_of_episods){
-            updating_fileds.duration = number_of_episods
+            updating_fileds.number_of_episods = number_of_episods
         }
         if(country){
             updating_fileds.country = country
@@ -100,6 +133,9 @@ exports.update_cartoon = async (req,res)=>{
         }
         if(style){
             updating_fileds.style = style
+        }
+        if(image){
+            updating_fileds.image = image
         }
         
         const cartoon = await cartoon_collection().updateOne({_id: new ObjectId(cartoon_id)}, {$set: updating_fileds})

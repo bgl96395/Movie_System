@@ -38,14 +38,14 @@ exports.get_cartoon_by_id = async (req,res)=>{
 
 exports.create_cartoon = async (req,res)=>{
     try{
-        const {title,description,release_date,number_of_episods,country,genre,raiting,main_characters,style} = req.body
-        if(!title || !description || !release_date || !number_of_episods || !country || !genre || !raiting || !main_characters || !style){
+        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style} = req.body
+        if(!title || !description || !release_year || !number_of_episods || !country || !genre || !rating || !main_characters || !style){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await cartoon_collection().insertOne({title,description,release_date,number_of_episods,country,genre,raiting,main_characters,style})
+        await cartoon_collection().insertOne({title,description,release_year,number_of_episods,country,genre,rating,main_characters,style})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +59,7 @@ exports.create_cartoon = async (req,res)=>{
 exports.update_cartoon = async (req,res)=>{
     try{
         const cartoon_id = req.params.id
-        const {title,description,release_date,number_of_episods,country,genre,raiting,main_characters,style} = req.body
+        const {title,description,release_year,number_of_episods,country,genre,rating,main_characters,style} = req.body
 
         if(!ObjectId.isValid(cartoon_id)){
             return res.status(400).json({
@@ -67,7 +67,7 @@ exports.update_cartoon = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !release_date && !number_of_episods && !country && !genre && !raiting && !main_characters && !style){
+        if(!title && !description && !release_year && !number_of_episods && !country && !genre && !rating && !main_characters && !style){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -89,11 +89,11 @@ exports.update_cartoon = async (req,res)=>{
         if(genre){
             updating_fileds.genre = genre
         }
-        if(raiting){
-            updating_fileds.raiting = raiting
+        if(rating){
+            updating_fileds.rating = rating
         }
-        if(release_date){
-            updating_fileds.release_date = release_date
+        if(release_year){
+            updating_fileds.release_year = release_year
         }
         if(main_characters){
             updating_fileds.main_characters = main_characters

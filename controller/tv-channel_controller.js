@@ -38,14 +38,14 @@ exports.get_channel_by_id = async (req,res)=>{
 
 exports.create_channel = async (req,res)=>{
     try{
-        const {title,description,launch_date,country,category,status,owner,website} = req.body
-        if(!title || !description || !launch_date || !country || !category || !status || !owner || !website){
+        const {title,description,launch_year,country,category,status,owner,website} = req.body
+        if(!title || !description || !launch_year || !country || !category || !status || !owner || !website){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await tv_collection().insertOne({title,description,launch_date,category,country,status,owner,website})
+        await tv_collection().insertOne({title,description,launch_year,category,country,status,owner,website})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +59,7 @@ exports.create_channel = async (req,res)=>{
 exports.update_channel = async (req,res)=>{
     try{
         const channel_id = req.params.id
-        const {title,description,launch_date,category,country,status,owner,website} = req.body
+        const {title,description,launch_year,category,country,status,owner,website} = req.body
 
         if(!ObjectId.isValid(channel_id)){
             return res.status(400).json({
@@ -67,7 +67,7 @@ exports.update_channel = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !launch_date && !category && !country && !status && !owner && !website){
+        if(!title && !description && !launch_year && !category && !country && !status && !owner && !website){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -80,8 +80,8 @@ exports.update_channel = async (req,res)=>{
         if(description){
             updating_fileds.description = description
         }
-        if(launch_date){
-            updating_fileds.launch_date = launch_date
+        if(launch_year){
+            updating_fileds.launch_year = launch_year
         }
         if(country){
             updating_fileds.country = country

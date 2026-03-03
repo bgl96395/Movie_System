@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="header">
+        <div id="head"><h1>KINOSEARCH</h1></div>
+        <div id="options">
+            <div id="film"><a href="/movies">Movies</a></div>
+            <div id="series"><a href="">Series</a></div>
+            <div id="cartoon"><a href="/cartoons">Cartoons</a></div>
+            <div id="TV"><a href="/channels">TV-channels</a></div>
+        </div>
+        <div id="search_of">
+            <input type="text" id="search" name="search" placeholder="Series">
+            <span id="ic"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+        <div id="logout">
+            <span id="icon"><i class="fa-solid fa-user"></i></span>
+            <span>Logout</span>
+        </div>   
+    </div>
+
+    <span class="main_header">Series</span>
+    <div id="filter">
+
+        <div class="filt">
+            <label>Genre</label>
+            <select id="genre_filter">
+                <option value=""></option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="action">Action</option>
+                <option value="fantasy">Fantasy</option>
+            </select>
+        </div>
+
+        <div class="filt">
+            <label>Country</label>
+            <select id="country_filter">
+                <option value=""></option>
+                <option value="Kazakhstan">Kazakhstan</option>
+                <option value="Russia">Russia</option>
+                <option value="US">US</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+
+        <div class="filt">
+            <label>Year</label>
+            <select id="year_filter">
+                <option value=""></option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="before_1980">before 1980</option>
+            </select>
+        </div>
+
+        <div class="filt">
+            <label>Raiting on Kinoserach</label>
+            <select id="rating_filter">
+                <option value=""></option>
+                <option value="9-10">9-10</option>
+                <option value="8-8.9">8-8.9</option>
+                <option value="7-7.9">7-7.9</option>
+                <option value="6-6.9">6-6.9</option>
+                <option value="0-5">0-5</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div id="elements">
+        <div id="prev" class="pag"><i class="fa-solid fa-angle-left"></i></div>
+        <div id="main"></div>
+        <div id="next" class="pag"><i class="fa-solid fa-angle-right"></i></div>
+    </div>
+
+    <div id="footer">
+
+        <div id="soc">
+            <div class="soci"><i class="fa-brands fa-vk"></i></div>
+            <div class="soci"><i class="fa-brands fa-telegram"></i></div>
+            <div class="soci"><i class="fa-brands fa-youtube"></i></div>
+            <div class="soci"><i class="fa-brands fa-tiktok"></i></div>
+            <div class="soci"><i class="fa-brands fa-instagram"></i></div>
+            <div class="soci"><i class="fa-brands fa-x-twitter"></i></div>
+        </div>
+
+        <div id="foot2">
+            <div class="col">All movies</div>
+            <div class="col">All series</div>
+            <div class="col">All cartoons</div>
+            <div class="col">TV channels</div>
+        </div>
+
+        <div id="foot1">
+            <div class="col">About us</div>
+            <div class="col">Contacts</div>
+        </div>
+
+        <div id="watching">
+            <div class="z">
+                <div class="z1"><i class="fa-brands fa-apple"></i></div>
+                <div class="z2">
+                    <div class="z3">download in</div>
+                    <div class="z4">App Store</div>
+                </div>
+            </div>
+            <div class="z">
+                <div class="z1"><i class="fa-brands fa-google-play"></i></div>
+                <div class="z2">
+                    <div class="z3">accessible on</div>
+                    <div class="z4">Google Play</div>
+                </div>
+            </div>
+            <div class="z">
+                <div class="z1"><i class="fa-solid fa-tv"></i></div>
+                <div class="z2">
+                    <div class="z3">watch on</div>
+                    <div class="z4">Smart TV</div>
+                </div>
+            </div>
+            <div class="z">
+                <div class="z1"><i class="fa-solid fa-store"></i></div>
+                <div class="z2">
+                    <div class="z3">install in</div>
+                    <div class="z4">RuStore</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rights">
+            <div>©2026, Kinosearch 18+</div>
+            <div>Project by <b>Bigali Nugmash</b></div>
+        </div>
+    </div>
+</body>
+</html>

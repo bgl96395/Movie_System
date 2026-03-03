@@ -38,14 +38,14 @@ exports.get_series_by_id = async (req,res)=>{
 
 exports.create_series = async (req,res)=>{
     try{
-        const {title,description,release_date,number_of_episods,country,genre,raiting} = req.body
-        if(!title || !description || !release_date || !number_of_episods || !country || !genre || !raiting){
+        const {title,description,release_year,number_of_episods,country,genre,rating} = req.body
+        if(!title || !description || !release_year || !number_of_episods || !country || !genre || !rating){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await series_collection().insertOne({title,description,release_date,number_of_episods,country,genre,raiting})
+        await series_collection().insertOne({title,description,release_year,number_of_episods,country,genre,rating})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +59,7 @@ exports.create_series = async (req,res)=>{
 exports.update_series = async (req,res)=>{
     try{
         const series_id = req.params.id
-        const {title,description,release_date,number_of_episods,country,genre,raiting} = req.body
+        const {title,description,release_year,number_of_episods,country,genre,rating} = req.body
 
         if(!ObjectId.isValid(series_id)){
             return res.status(400).json({
@@ -67,7 +67,7 @@ exports.update_series = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !release_date && !number_of_episods && !country && !genre && !raiting){
+        if(!title && !description && !release_year && !number_of_episods && !country && !genre && !rating){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -89,11 +89,11 @@ exports.update_series = async (req,res)=>{
         if(genre){
             updating_fileds.genre = genre
         }
-        if(raiting){
-            updating_fileds.raiting = raiting
+        if(rating){
+            updating_fileds.rating = rating
         }
-        if(release_date){
-            updating_fileds.release_date = release_date
+        if(release_year){
+            updating_fileds.release_year = release_year
         }
         
         const series = await series_collection().updateOne({_id: new ObjectId(series_id)}, {$set: updating_fileds})

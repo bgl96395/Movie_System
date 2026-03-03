@@ -22,14 +22,23 @@ app.use(series_route)
 app.use(cartoon_route)
 app.use(channel_route)
 
-app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname, "/views/index.html"))
+app.get("/movies",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/views/movies.html"))
+})
+app.get("/series",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/views/series.html"))
+})
+app.get("/cartoons",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/views/cartoons.html"))
+})
+app.get("/channels",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/views/channels.html"))
 })
 
 PORT = process.env.PORT
 connectDB().then(()=>{
     app.listen(PORT,()=>{
-        console.log(`Server running on http://localhost:${PORT}`)
+        console.log(`Server running on http://localhost:${PORT}/movies`)
     })
 }).catch((err)=>{
     console.error("Failed to connect MongoDB: ",err)

@@ -33,10 +33,11 @@
             <label>Caregory</label>
             <select id="genre_filter">
                 <option value=""></option>
-                <option value="comedy">Sport</option>
-                <option value="drama">Wild</option>
-                <option value="action">Politics</option>
-                <option value="fantasy">Science</option>
+                <option value="sport">Sport</option>
+                <option value="wild">Wild</option>
+                <option value="politics">Politics</option>
+                <option value="science">Science</option>
+                <option value="news">News</option>
             </select>
         </div>
 
@@ -55,8 +56,8 @@
             <label>Status</label>
             <select id="rating_filter">
                 <option value=""></option>
-                <option value="true">Active</option>
-                <option value="false">None Active</option>
+                <option value="active">Active</option>
+                <option value="no_active">None Active</option>
             </select>
         </div>
 
@@ -64,7 +65,7 @@
 
     <div id="elements">
         <div id="prev" class="pag"><i class="fa-solid fa-angle-left"></i></div>
-        <div id="main"></div>
+        <div id="channel_main"></div>
         <div id="next" class="pag"><i class="fa-solid fa-angle-right"></i></div>
     </div>
 
@@ -127,5 +128,7 @@
             <div>Project by <b>Bigali Nugmash</b></div>
         </div>
     </div>
+
+    <script src="/js/channel.js"></script>
 </body>
 </html>

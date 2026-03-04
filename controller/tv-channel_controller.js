@@ -1,14 +1,38 @@
 const {ObjectId} = require("mongodb")
 const tv_collection = require("../models/tv-channel_model")
 
-exports.get_channel = async (req,res) =>{
-    try{
-        const channel = await tv_collection().find().toArray()
-        res.status(200).json(channel)
-    }catch{
-        res.status(500).json({
-            error:"Database Error"
-        })
+exports.get_channel = async (req,res) => {
+    try {
+        const {
+            page = 1,
+            limit = 3,
+            category,
+            country,
+            status
+        } = req.query
+
+        const filter = {}
+
+        if(category){
+            filter.category = category
+        }
+        if(country){
+            filter.country = country
+        }
+        if(status){
+            filter.status = status
+        }
+
+        const limit_num = Number(limit) || 3
+        const skip = (page - 1) * limit_num
+
+        const channels = await tv_collection().find(filter).skip(skip).limit(limit_num).toArray()
+        const total = await tv_collection().countDocuments(filter)
+        const total_pages = Math.ceil(total/limit_num)
+
+        res.status(200).json({channels, total_pages})
+    } catch(err){
+        res.status(500).json({ error:"Database Error" })
     }
 }
 
@@ -38,14 +62,14 @@ exports.get_channel_by_id = async (req,res)=>{
 
 exports.create_channel = async (req,res)=>{
     try{
-        const {title,description,launch_year,country,category,status,owner,website} = req.body
-        if(!title || !description || !launch_year || !country || !category || !status || !owner || !website){
+        const {title,description,launch_year,country,category,status,owner,website,image} = req.body
+        if(!title || !description || !launch_year || !country || !category || !status || !owner || !website || !image){
             return res.status(400).json({
                 error:"Missed Field(s)"
             })
         }
 
-        await tv_collection().insertOne({title,description,launch_year,category,country,status,owner,website})
+        await tv_collection().insertOne({title,description,launch_year,category,country,status,owner,website,image})
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -59,7 +83,7 @@ exports.create_channel = async (req,res)=>{
 exports.update_channel = async (req,res)=>{
     try{
         const channel_id = req.params.id
-        const {title,description,launch_year,category,country,status,owner,website} = req.body
+        const {title,description,launch_year,category,country,status,owner,website,image} = req.body
 
         if(!ObjectId.isValid(channel_id)){
             return res.status(400).json({
@@ -67,7 +91,7 @@ exports.update_channel = async (req,res)=>{
             })
         }
 
-        if(!title && !description && !launch_year && !category && !country && !status && !owner && !website){
+        if(!title && !description && !launch_year && !category && !country && !status && !owner && !website && !image){
             return res.status(400).json({
                 error:"No Fileds To Update"
             })
@@ -97,6 +121,9 @@ exports.update_channel = async (req,res)=>{
         }
         if(status){
             updating_fileds.status = status
+        }
+        if(image){
+            updating_fileds.image = image
         }
         
         const channel = await tv_collection().updateOne({_id: new ObjectId(channel_id)}, {$set: updating_fileds})

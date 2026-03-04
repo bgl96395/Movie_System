@@ -53,7 +53,7 @@ function render(data){
 
         div.classList.add("card")
         div.innerHTML = `
-            <div class="for_image">
+            <a href="/for_cartoons"><div class="for_image">
                 <img src="${image}" alt="${cartoon.title}">
                 <div class="overlay">
                     <div class="overlay_text">rating: <b>${cartoon.rating}</b></div>
@@ -61,7 +61,7 @@ function render(data){
                     <div class="overlay_text2">genre: <b>${cartoon.genre.join(", ")}</b></div>
                     <div class="overlay_text2">release year: <b>${cartoon.release_year}</b></div>
                 </div>
-            </div>
+            </div></a>
         `
         cartoons.appendChild(div)
     })
@@ -125,7 +125,7 @@ async function show_by_name_or_id() {
 
         div.classList.add("card")
         div.innerHTML = `
-            <div class="for_image">
+            <a href="/for_cartoons"><div class="for_image">
                 <img src="${image}" alt="${cartoon.title}">
                 <div class="overlay">
                     <div class="overlay_text">rating: <b>${cartoon.rating}</b></div>
@@ -133,7 +133,7 @@ async function show_by_name_or_id() {
                     <div class="overlay_text2">genre: <b>${cartoon.genre.join(", ")}</b></div>
                     <div class="overlay_text2">release year: <b>${cartoon.release_year}</b></div>
                 </div>
-            </div>
+            </div></a>
         `
         cartoons.appendChild(div)
     })

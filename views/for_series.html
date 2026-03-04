@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinosearch</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/specific.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div id="header">
         <div id="head"><h1>KINOSEARCH</h1></div>
-        <div id="options">
+        <div id="options2">
             <div id="film"><a href="/movies">Movies</a></div>
             <div id="series"><a href="/series">Series</a></div>
             <div id="cartoon"><a href="/cartoons">Cartoons</a></div>
-            <div id="TV"><a href="">TV-channels</a></div>
-        </div>
-        <div id="search_of">
-            <input type="text" id="search" name="search" placeholder="channels">
-            <span id="ic"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <div id="TV"><a href="/channels">TV-channels</a></div>
         </div>
         <div id="logout">
             <span id="icon"><i class="fa-solid fa-user"></i></span>
@@ -26,51 +23,9 @@
         </div>   
     </div>
 
-    <span class="main_header">TV Channels</span>
-    <div id="filter">
-
-        <div class="filt">
-            <label>Caregory</label>
-            <select id="genre_filter">
-                <option value=""></option>
-                <option value="sport">Sport</option>
-                <option value="wild">Wild</option>
-                <option value="politics">Politics</option>
-                <option value="science">Science</option>
-                <option value="news">News</option>
-            </select>
-        </div>
-
-        <div class="filt">
-            <label>Country</label>
-            <select id="country_filter">
-                <option value=""></option>
-                <option value="Kazakhstan">Kazakhstan</option>
-                <option value="Russia">Russia</option>
-                <option value="US">US</option>
-                <option value="UK">UK</option>
-            </select>
-        </div>
-
-        <div class="filt">
-            <label>Status</label>
-            <select id="rating_filter">
-                <option value=""></option>
-                <option value="active">Active</option>
-                <option value="no_active">None Active</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div id="elements">
-        <div id="prev" class="pag"><i class="fa-solid fa-angle-left"></i></div>
-        <div id="channel_main"></div>
-        <div id="next" class="pag"><i class="fa-solid fa-angle-right"></i></div>
-    </div>
+    <div id="about_series"></div>
 
     <div id="footer">
-
         <div id="soc">
             <div class="soci"><i class="fa-brands fa-vk"></i></div>
             <div class="soci"><i class="fa-brands fa-telegram"></i></div>
@@ -129,6 +84,5 @@
         </div>
     </div>
 
-    <script src="/js/channel.js"></script>
 </body>
 </html>

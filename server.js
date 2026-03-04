@@ -35,6 +35,19 @@ app.get("/channels",(req,res)=>{
     res.sendFile(path.join(__dirname, "/views/channels.html"))
 })
 
+app.get("/for_movies",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/for_movies.html"))
+})
+app.get("/for_series",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/for_series.html"))
+})
+app.get("/for_cartoons",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/for_cartoons.html"))
+})
+app.get("/for_channels",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/for_channels.html"))
+})
+
 PORT = process.env.PORT
 connectDB().then(()=>{
     app.listen(PORT,()=>{

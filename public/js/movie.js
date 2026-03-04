@@ -53,7 +53,7 @@ function render(data){
 
         div.classList.add("card")
         div.innerHTML = `
-            <div class="for_image">
+            <div class="for_image" onclick="window.location.href='/for_movies?id=${movie._id}'">
                 <img src="${image}" alt="${movie.title}">
                 <div class="overlay">
                     <div class="overlay_text">rating: <b>${movie.rating}</b></div>
@@ -125,7 +125,7 @@ async function show_by_name_or_id() {
 
         div.classList.add("card")
         div.innerHTML = `
-            <div class="for_image">
+            <div class="for_image" onclick="window.location.href='/for_movies?id=${movie._id}'">
                 <img src="${image}" alt="${movie.title}">
                 <div class="overlay">
                     <div class="overlay_text">rating: <b>${movie.rating}</b></div>

@@ -68,6 +68,11 @@ body{
     align-items: center;
     justify-content: center;
     margin-left: 20px;
+    width: 100%;
+}
+
+.t{
+    flex: 1;
 }
 
 .rating{

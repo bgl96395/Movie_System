@@ -134,3 +134,54 @@ async function show_by_name_or_id() {
 }
 
 document.getElementById("ic").onclick = show_by_name_or_id
+
+async function create(){
+    try{
+        const title = document.getElementById("title").value
+        const category = document.getElementById("category").value
+        const country = document.getElementById("country").value
+
+        const launch = document.getElementById("launch_year").value
+        const launch_year = Number(launch)
+
+        const description = document.getElementById("description").value
+        const image = document.getElementById("image").value
+        const status = document.getElementById("status").value
+        const owner =document.getElementById("owner").value
+        const website = document.getElementById("website").value
+
+        const res = await fetch("/api/tv-channel",{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title,
+                category,
+                country,
+                launch_year,
+                description,
+                image,
+                status,
+                owner,
+                website
+            })
+        })
+
+        if(res.ok){
+            alert("Created Successfully")
+        }
+        else{
+            alert("Failed to create!")
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to Create!!")
+    }
+}
+
+document.getElementById("creating").addEventListener("submit",function(e){
+    e.preventDefault()
+    create()
+})

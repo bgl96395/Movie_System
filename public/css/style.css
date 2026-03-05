@@ -345,3 +345,90 @@ select{
     font-size: 40px;
     cursor: pointer;
 }
+
+#creating{
+    display: flex;
+    flex-direction: column;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 10px;
+    gap:20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    border: 3px solid #f0f0f0;
+    border-radius: 10px;
+}
+
+.create_head{
+    font-size: 20px;
+}
+
+.cont{
+    display: flex;
+    gap:10px;
+}
+
+.cont label{
+    width: 32%;
+    display: flex;
+}
+
+.cont label input::placeholder{
+    color: #99999b;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cont input{
+    border-radius: 5px;
+    border: 1px solid #d4d3d3;
+    background-color: #fcfcfc;
+}
+
+.contr input::placeholder{
+    color: #99999b;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.contr{
+    display: flex;
+    padding-right: 15px;
+}
+
+.contr input{
+    border-radius: 5px;
+    background-color: #fcfcfc;
+    border: 1px solid #d4d3d3;
+}
+
+.in{
+    flex:1;
+    width: 30%;
+}
+
+#description{
+    width: 97.5%;
+    height: 80px;
+    max-width: 97.5%;
+}
+
+textarea{
+    border-radius: 5px;
+    background-color: #fcfcfc;
+    border: 1px solid #d4d3d3;
+}
+
+textarea::placeholder{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn{
+    width: 98.5%;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #d4d3d3;
+    font-size: 17px;
+    background-color: #f2f2f5;
+}

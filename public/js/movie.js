@@ -140,3 +140,51 @@ async function show_by_name_or_id() {
 }
 
 document.getElementById("ic").onclick = show_by_name_or_id
+
+async function create(){
+    try{
+        const title = document.getElementById("title").value
+        const genre = document.getElementById("genre").value
+        const country = document.getElementById("country").value
+        const release_year = document.getElementById("release_year").value
+        const duration = document.getElementById("duration").value
+        const rating = document.getElementById("rating").value
+        const description = document.getElementById("description").value
+        const image = document.getElementById("image").value
+
+        const genres = genre.split(",").map(g => g.trim()).filter(g=>g !== "")
+        const countries = country.split(",").map(c => c.trim()).filter(c=>c !== "")
+
+        const res = await fetch("/api/movies",{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title,
+                genre:genres,
+                country:countries,
+                release_year,
+                duration,
+                rating,
+                description,
+                image})
+        })
+
+        if(res.ok){
+            alert("Created Successfully")
+        }
+        else{
+            alert("Failed to create!")
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to Create!!")
+    }
+}
+
+document.getElementById("creating").addEventListener("submit",function(e){
+    e.preventDefault()
+    create()
+})

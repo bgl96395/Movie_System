@@ -146,9 +146,16 @@ async function create(){
         const title = document.getElementById("title").value
         const genre = document.getElementById("genre").value
         const country = document.getElementById("country").value
-        const release_year = document.getElementById("release_year").value
-        const duration = document.getElementById("duration").value
-        const rating = document.getElementById("rating").value
+
+        const release = document.getElementById("release_year").value
+        const release_year = Number(release)
+
+        const dur = document.getElementById("duration").value
+        const duration = Number(dur)
+
+        const rat = document.getElementById("rating").value
+        const rating = Number(rat)
+
         const description = document.getElementById("description").value
         const image = document.getElementById("image").value
 

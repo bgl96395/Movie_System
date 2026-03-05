@@ -41,7 +41,7 @@ async function show(){
             </div>
         `
     }catch{
-        document.getElementById("about_movie").innerHTML = "Failed to load movie"
+        document.getElementById("about_movie").innerHTML = "Failed to load cartoon"
     }
 }
 

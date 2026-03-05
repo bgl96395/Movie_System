@@ -49,14 +49,14 @@ function render(data){
 
         div.classList.add("card")
         div.innerHTML = `
-            <a href="/for_channels"><div class="for_ch_image">
+            <div class="for_ch_image" onclick="window.location.href='/for_channels?id=${channel._id}'">
                 <img src="${image}" alt="${channel.title}">
                 <div class="overlay">
                     <div class="overlay_text">categroy: <b>${channel.category}</b></div>
                     <div class="overlay_text2">country: <b>${channel.country}</b></div>
                     <div class="overlay_text2">status: <b>${channel.status}</b></div>
                 </div>
-            </div></a>
+            </div>
         `
         channels.appendChild(div)
     })
@@ -120,14 +120,14 @@ async function show_by_name_or_id() {
 
         div.classList.add("card")
         div.innerHTML = `
-            <a href="/for_channels"><div class="for_ch_image">
+            <div class="for_ch_image" onclick="window.location.href='/for_channels?id=${channel._id}'">
                 <img src="${image}" alt="${channel.title}">
                 <div class="overlay">
                     <div class="overlay_text">category: <b>${channel.category}</b></div>
                     <div class="overlay_text2">country: <b>${channel.country}</b></div>
                     <div class="overlay_text2">status: <b>${channel.status}</b></div>
                 </div>
-            </div></a>
+            </div>
         `
         channels.appendChild(div)
     })

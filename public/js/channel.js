@@ -145,7 +145,7 @@ async function create(){
         const launch_year = Number(launch)
 
         const description = document.getElementById("description").value
-        const image = document.getElementById("image").value
+        const image = document.getElementById("image").value || "/img/default.avif"
         const status = document.getElementById("status").value
         const owner =document.getElementById("owner").value
         const website = document.getElementById("website").value

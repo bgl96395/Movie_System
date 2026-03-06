@@ -125,3 +125,30 @@ document.getElementById("updating").addEventListener("submit",function(e){
     e.preventDefault()
     update()
 })
+
+async function delet(){
+    try{
+        const params = new URLSearchParams(window.location.search)
+        const id = params.get("id")
+
+        const res = await fetch(`/api/movies/${id}`,{
+            method: "DELETE",
+            credentials: "include"
+        })
+        
+        if(res.ok){
+            alert("Deleted Successfully")
+        }
+        else{
+            alert("Failed to delete")
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to delete!")
+    }
+}
+
+document.getElementById("deleting").addEventListener("submit",function(e){
+    e.preventDefault()
+    delet()
+})

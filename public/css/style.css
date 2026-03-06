@@ -438,12 +438,48 @@ textarea::placeholder{
     font-family: 'Courier New', Courier, monospace;
 }
 
-.btn{
+.create-btn{
+    background-color:#28a745;
+    color:white;
     width: 98.5%;
     height: 30px;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #d4d3d3;
     font-size: 17px;
-    background-color: #f2f2f5;
+    border: 0;
+}
+.create-btn:hover{
+    background-color:#218838;
+}
+
+.update-btn{
+    background-color:#007bff;
+    color:white;
+    width: 98.5%;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 17px;
+    border: 0;
+}
+.update-btn:hover{
+    background-color:#0056b3;
+}
+
+.delete-btn{
+    background-color:#dc3545;
+    color:white;
+    width: 57.7%;
+    border: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 322px;
+    margin-right: auto;
+    font-size: 17px;
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.delete-btn:hover{
+    background-color:#b02a37;
 }

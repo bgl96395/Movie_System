@@ -157,7 +157,7 @@ async function create(){
         const rating = Number(rat)
 
         const description = document.getElementById("description").value
-        const image = document.getElementById("image").value
+        const image = document.getElementById("image").value || "/img/default.avif"
 
         const genres = genre.split(",").map(g => g.trim()).filter(g=>g !== "")
         const countries = country.split(",").map(c => c.trim()).filter(c=>c !== "")

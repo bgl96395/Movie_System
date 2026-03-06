@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "connect-mongo": "^6.0.0",
     "dotenv": "^17.3.1",
     "ethers": "^6.16.0",
     "express": "^5.2.1",
-    "mongodb": "^7.1.0"
+    "express-session": "^1.19.0",
+    "mongodb": "^7.1.0",
+    "session": "^0.1.0"
   },
   "name": "movie_system",
   "version": "1.0.0",

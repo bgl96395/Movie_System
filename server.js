@@ -48,6 +48,13 @@ app.get("/for_channels",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/for_channels.html"))
 })
 
+app.get("/login",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/login.html"))
+})
+app.get("/register",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/register.html"))
+})
+
 PORT = process.env.PORT
 connectDB().then(()=>{
     app.listen(PORT,()=>{

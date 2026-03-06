@@ -46,3 +46,92 @@ async function show(){
 }
 
 show()
+
+async function update(){
+    try{
+        const params = new URLSearchParams(window.location.search)
+        const id = params.get("id")
+
+        const title = document.getElementById("title").value
+        const genre = document.getElementById("genre").value
+        const country = document.getElementById("country").value
+
+        const release = document.getElementById("release_year").value
+        const release_year = Number(release)
+
+        const number_of_episodes = document.getElementById("number_of_episodes").value
+        const number_of_episods = Number(number_of_episodes)
+
+        const rat = document.getElementById("rating").value
+        const rating = Number(rat)
+
+        const description = document.getElementById("description").value
+        const image = document.getElementById("image").value
+        const main_characters = document.getElementById("main_characters").value
+        const style =document.getElementById("style").value
+
+        const genres = genre.split(",").map(g => g.trim()).filter(g=>g !== "")
+        const countries = country.split(",").map(c => c.trim()).filter(c=>c !== "")
+
+        const body = {}
+        if(title){
+            body.title = title
+        }
+        if(genre){
+            body.genre = genres
+        }
+        if(country){
+            body.country = countries
+        }
+        if(release_year){
+            body.release_year = release_year
+        }
+        if(number_of_episods){
+            body.number_of_episods = number_of_episods
+        }
+        if(rating){
+            body.rating = rating
+        }
+        if(description){
+            body.description = description
+        }
+        if(image){
+            body.image = image
+        }
+        if(main_characters){
+            body.main_characters = main_characters
+        }
+        if(style){
+            body.style = style
+        }
+
+        if(Object.keys(body).length === 0){
+            alert("Atleast one field must filled")
+            return
+        }
+
+        const res = await fetch(`/api/cartoons/${id}`,{
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(body)
+        })
+
+        if(res.ok){
+            alert("Updated Successfully")
+        }
+        else{
+            alert("Failed to update")
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to update!")
+    }
+}
+
+document.getElementById("updating").addEventListener("submit",function(e){
+    e.preventDefault()
+    update()
+})

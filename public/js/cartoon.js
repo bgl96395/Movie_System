@@ -157,7 +157,7 @@ async function create(){
         const rating = Number(rat)
 
         const description = document.getElementById("description").value
-        const image = document.getElementById("image").value
+        const image = document.getElementById("image").value || "/img/default.avif"
         const main_characters = document.getElementById("main_characters").value
         const style =document.getElementById("style").value
 

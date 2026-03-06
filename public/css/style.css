@@ -78,7 +78,7 @@ input::placeholder{
 }
 
 #logout:hover{
-    color: white;
+    color: white !important;
 }
 
 #icon{
@@ -499,4 +499,16 @@ textarea::placeholder{
 
 .delete-btn-for-channel:hover{
     background-color:#b02a37;
+}
+
+.zz{
+    border: 0;
+    background-color: transparent;
+    color: rgb(153, 153, 153);
+    font-size: 16px;
+    height: 40px;
+}
+
+.zz:hover{
+    color: white;
 }

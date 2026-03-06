@@ -20,10 +20,12 @@
             <input type="text" id="search" name="search" placeholder="channels">
             <span id="ic"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
-        <div id="logout">
-            <span id="icon"><i class="fa-solid fa-user"></i></span>
-            <span>Logout</span>
-        </div>   
+        <form id="logout" method="POST" action="/logout">
+            <button type="submit" class="zz">
+                <span id="icon"><i class="fa-solid fa-user"></i></span>
+                <span>Logout</span>
+            </button>
+        </form>    
     </div>
 
     <span class="main_header">TV Channels</span>

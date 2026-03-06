@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinosearch</title>
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <form class="login_block">
+    <form class="login_block" method="POST" action="/login">
         <p class="header">Login</p>
-        <label>email:<br>
-            <input type="email" id="email" placeholder="yourname@gmail.com">
+        <label><i class="fa-solid fa-at"></i> email:<br>
+            <input type="email" id="email" name="email" placeholder="yourname@gmail.com">
         </label>
-        <label>password:<br>
-            <input type="password" id="password">
+        <label><i class="fa-solid fa-lock"></i> password:<br>
+            <input type="password" id="password" name="password">
         </label>
         <div class="down">
             <button>log in</button>
@@ -22,5 +23,16 @@
         </div>
     </form>
 
+    <script>
+        const url_params = new URLSearchParams(window.location.search)
+        const error = url_params.get("error")
+        if(error){
+            alert(decodeURIComponent(error))
+        }
+        const success = url_params.get("success")
+        if(success){
+            alert(decodeURIComponent(success))
+        }
+    </script>
 </body>
 </html>

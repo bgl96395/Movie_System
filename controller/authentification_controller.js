@@ -3,7 +3,6 @@ const user_collection = require("../models/user_model")
 
 exports.login = async (req,res)=>{
     try{
-        console.log("BODY:", req.body)
         const {email,password} = req.body
 
         if(!email || !password){

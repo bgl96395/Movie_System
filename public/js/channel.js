@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded",()=>{
+    check_role()
+})
+
+async function check_role(){
+    try{
+        const res = await fetch("/api/user",{
+            credentials:"include"
+        })
+        const user = await res.json()
+        if(user.role !== "admin"){
+            document.getElementById("creating").style.display = "none"
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to hide options")
+    }
+}
+
 let current_page = 1
 let limit = 3
 let total_pages = 1

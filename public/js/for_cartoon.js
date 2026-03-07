@@ -1,3 +1,24 @@
+document.addEventListener("DOMContentLoaded",()=>{
+    check_role()
+})
+
+async function check_role(){
+    try{
+        const res = await fetch("/api/user",{
+            credentials:"include"
+        })
+        const user = await res.json()
+        if(user.role !== "admin"){
+            document.getElementById("updating").classList.add("hidden")
+            document.getElementById("deleting").style.display = "none"
+        }
+    }catch(err){
+        console.log(err)
+        alert("Failed to hide options")
+    }
+}
+
+
 async function show(){
     try{
         const params = new URLSearchParams(window.location.search)
@@ -41,7 +62,7 @@ async function show(){
             </div>
         `
     }catch{
-        document.getElementById("about_movie").innerHTML = "Failed to load cartoon"
+        document.getElementById("about_cartoons").innerHTML = "Failed to load cartoon"
     }
 }
 

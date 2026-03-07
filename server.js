@@ -65,6 +65,23 @@ app.get("/register",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/register.html"))
 })
 
+app.get("/api/user",(req,res)=>{
+    if(req.session.user && req.session.user.role){
+        res.json({
+            role: req.session.user.role
+        })
+    }
+    else{
+        res.json({
+            role:null
+        })
+    }
+})
+
+app.use((req,res)=>{
+    res.status(404).sendFile(path.join(__dirname,"/views/404.html"))
+})
+
 PORT = process.env.PORT
 connectDB().then(()=>{
     app.listen(PORT,()=>{

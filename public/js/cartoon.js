@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded",()=>{
+    check_role()
+})
+
+
+async function check_role(){
+    try{
+        const res = await fetch("/api/user",{
+            credentials:"include"
+        })
+        const user = await res.json()
+        if(user.role !== "admin"){
+            document.getElementById("creating").classList.add("hidden")
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
+
 let current_page = 1
 let limit = 6
 let total_pages = 1

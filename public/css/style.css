@@ -96,7 +96,7 @@ input::placeholder{
     width: 100%;
     margin-bottom: 0;
     color: gray;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 #soc{
@@ -362,10 +362,6 @@ select{
     border-radius: 10px;
 }
 
-.hidden {
-    display: none !important;
-}
-
 #updating{
     display: flex;
     flex-direction: column;
@@ -516,4 +512,8 @@ textarea::placeholder{
 
 .zz:hover{
     color: white;
+}
+
+.hidden{
+    display: none !important;
 }

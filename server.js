@@ -14,6 +14,7 @@ const series_route = require("./routes/series_route")
 const cartoon_route = require("./routes/cartoon_route")
 const channel_route = require("./routes/tv-channel_route")
 const authentification_route = require("./routes/authentification_route")
+const review_route = require("./routes/review_route")
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(series_route)
 app.use(cartoon_route)
 app.use(channel_route)
 app.use(authentification_route)
+app.use(review_route)
 
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/index.html"))

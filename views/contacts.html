@@ -5,65 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinosearch</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/specific.css">
+    <link rel="stylesheet" href="/css/contacts.css">
     <link rel="icon" href="/img/icon.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div id="header">
         <div id="head"><h1>KINOSEARCH</h1></div>
-        <div id="options2">
+        <div id="options">
             <div id="film"><a href="/movies">Movies</a></div>
             <div id="series"><a href="/series">Series</a></div>
             <div id="cartoon"><a href="/cartoons">Cartoons</a></div>
             <div id="TV"><a href="/channels">TV-channels</a></div>
         </div>
+        <div id="search_of">
+            <input type="text" id="search" name="search" placeholder="Movies">
+            <span id="ic"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
         <form id="logout" method="POST" action="/logout">
             <button type="submit" class="zz">
-                <span id="icon"><i class="fa-solid fa-user"></i></span>
-                <span>Logout</span>
+            <span id="icon"><i class="fa-solid fa-user"></i></span>
+            <span>Logout</span>
             </button>
-        </form>  
-        <div id="favorites"><a href="/favorites">Favorites</a></div>  
+        </form>   
+        <div id="favorites"><a href="">Favorites</a></div>
     </div>
 
-    <div id="about_movie"></div>
-    <form id="deleting"><button class="delete-btn">Delete</button></form>
-
-    <form id="updating">
-        <p class="create_head">Update</p>
-        <div class="cont">
-            <label>title:
-                <input type="text" id="title" class="in" placeholder="title">
-            </label>
-            <label>genre:
-                <input type="text" id="genre" class="in" placeholder="genre">
-            </label>
-            <label>country:
-                <input type="text" id="country" class="in" placeholder="country">
-            </label>
-        </div>
-        <div class="cont">
-            <label>release year:
-                <input type="number" id="release_year" class="in" placeholder="release year">
-            </label>
-            <label>duratin:
-                <input type="number" id="duration" class="in" placeholder="duration(in minutes)">
-            </label>
-            <label>rating:
-                <input type="number" id="rating" class="in" placeholder="rating" step="0.1">
-            </label>
-        </div>
-        <label>description:<br>
-            <textarea id="description" placeholder="description" rows="4"></textarea>
-        </label>
-        <label class="contr">image:
-            <input type="text" id="image" class="in" placeholder="image">
-        </label>
-        <button class="update-btn">update</button>
-    </form>
-
     <div id="footer">
+
         <div id="soc">
             <div class="soci"><i class="fa-brands fa-vk"></i></div>
             <div class="soci"><i class="fa-brands fa-telegram"></i></div>
@@ -82,7 +51,7 @@
 
         <div id="foot1">
             <div class="col"><a href="/about">About us</a></div>
-            <div class="col"><a href="/contacts">Contacts</a></div>
+            <div class="col"><a href="">Contacts</a></div>
         </div>
 
         <div id="watching">
@@ -121,7 +90,5 @@
             <div>Project by <b>Bigali Nugmash</b></div>
         </div>
     </div>
-
-    <script src="/js/for_movie.js"></script>
 </body>
 </html>

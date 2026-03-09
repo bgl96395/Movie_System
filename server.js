@@ -29,6 +29,16 @@ app.use(cartoon_route)
 app.use(channel_route)
 app.use(authentification_route)
 
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/index.html"))
+})
+app.get("/login",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/login.html"))
+})
+app.get("/register",(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/register.html"))
+})
+
 app.get("/movies",auth_middleware,(req,res)=>{
     res.sendFile(path.join(__dirname, "/views/movies.html"))
 })
@@ -55,14 +65,15 @@ app.get("/for_channels",auth_middleware,(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/for_channels.html"))
 })
 
-app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"/views/index.html"))
+app.get("/about",auth_middleware,(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/about.html"))
 })
-app.get("/login",(req,res)=>{
-    res.sendFile(path.join(__dirname,"/views/login.html"))
+app.get("/contacts",auth_middleware,(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/contacts.html"))
 })
-app.get("/register",(req,res)=>{
-    res.sendFile(path.join(__dirname,"/views/register.html"))
+
+app.get("/favorites",auth_middleware,(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/favorites.html"))
 })
 
 app.get("/api/user",(req,res)=>{

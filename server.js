@@ -68,8 +68,8 @@ app.get("/for_channels",auth_middleware,(req,res)=>{
 app.get("/about",auth_middleware,(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/about.html"))
 })
-app.get("/contacts",auth_middleware,(req,res)=>{
-    res.sendFile(path.join(__dirname,"/views/contacts.html"))
+app.get("/review",auth_middleware,(req,res)=>{
+    res.sendFile(path.join(__dirname,"/views/review.html"))
 })
 
 app.get("/favorites",auth_middleware,(req,res)=>{
@@ -79,12 +79,14 @@ app.get("/favorites",auth_middleware,(req,res)=>{
 app.get("/api/user",(req,res)=>{
     if(req.session.user && req.session.user.role){
         res.json({
-            role: req.session.user.role
+            role: req.session.user.role,
+            username: req.session.user.username
         })
     }
     else{
         res.json({
-            role:null
+            role:null,
+            username:null
         })
     }
 })

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinosearch</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/contacts.css">
+    <link rel="stylesheet" href="/css/review.css">
     <link rel="icon" href="/img/icon.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -31,6 +31,26 @@
         </form>   
     </div>
 
+    <div id="rev">
+        <div>
+            <span class="h1">Review about Kinosearch</span><br><br>
+            <span class="h0">Here you can leave a review and share your experience using Kinosearch</span>
+        </div>
+        <div id="user_name"></div>
+        <textarea placeholder="leave review" rows="6" id="comments"></textarea>
+        <button id="rev_btn">send</button>
+    </div>
+
+    <div id="rev2">
+        <span id="h2">Reviews</span>
+        <p id="h3">Reviews help to Kinosearch become better</p>
+        <div id="elements">
+            <div id="prev" class="pag"><i class="fa-solid fa-angle-left"></i></div>
+            <div id="coms"></div>
+            <div id="next" class="pag"><i class="fa-solid fa-angle-right"></i></div>
+        </div>
+    </div>
+
     <div id="footer">
 
         <div id="soc">
@@ -51,7 +71,7 @@
 
         <div id="foot1">
             <div class="col"><a href="/about">About us</a></div>
-            <div class="col"><a href="">Contacts</a></div>
+            <div class="col"><a href="">Leave review</a></div>
         </div>
 
         <div id="watching">
@@ -90,5 +110,7 @@
             <div>Project by <b>Bigali Nugmash</b></div>
         </div>
     </div>
+
+    <script src="/js/review.js"></script>
 </body>
 </html>

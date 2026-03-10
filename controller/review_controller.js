@@ -5,14 +5,14 @@ exports.show_review = async (req,res) =>{
     try{
         const {
             page = 1,
-            limit = 6,
+            limit = 4,
         } = req.query
 
-        const limit_num = Number(limit) || 6
+        const limit_num = Number(limit) || 4
         const skip = (page - 1) * limit_num
 
         const review = await user_review_collection().find().skip(skip).limit(limit_num).toArray()
-        const total = await movie_collection().countDocuments()
+        const total = await user_review_collection().countDocuments()
         const total_pages = Math.ceil(total/limit_num)
         res.status(200).json({review,total_pages})
     }catch(err){
@@ -107,6 +107,12 @@ exports.update_review = async (req,res) =>{
             })
         }
 
+        if(review.user_id.toString() !== req.session.user.id.toString()){
+            return res.status(403).json({
+                error:"Access denied"
+            })
+        }
+
         res.status(200).json({
             message: "Updated Successfully"
         })
@@ -127,12 +133,21 @@ exports.delete_review = async (req,res)=>{
             })
         }
 
-        const review = await user_review_collection().deleteOne({_id: new ObjectId(id)})
-        if(review.deletedCount === 0){
+        const review = await user_review_collection().findOne({_id: new ObjectId(id)})
+
+        if(!review){
             return res.status(404).json({
                 error:"Review Not Found"
             })
         }
+
+        if(review.user_id.toString() !== req.session.user.id.toString()){
+            return res.status(403).json({
+                error:"Access denied"
+            })
+        }
+
+        await user_review_collection().deleteOne({_id: new ObjectId(id)})
 
         res.status(200).json({
             message:"Deleted Successfully"

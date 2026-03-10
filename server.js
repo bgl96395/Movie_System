@@ -81,12 +81,14 @@ app.get("/favorites",auth_middleware,(req,res)=>{
 app.get("/api/user",(req,res)=>{
     if(req.session.user && req.session.user.role){
         res.json({
+            id: req.session.user.id,
             role: req.session.user.role,
             username: req.session.user.username
         })
     }
     else{
         res.json({
+            id:null,
             role:null,
             username:null
         })

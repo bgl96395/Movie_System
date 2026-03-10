@@ -18,18 +18,69 @@ async function check_role(){
     }
 }
 
+const movie_id = new URLSearchParams(window.location.search).get("id")
+let is_favorite = false
+
+async function check_favorite(){
+    try{
+        const res = await fetch("/api/fav_movies",{
+            credentials:"include"
+        })
+        const data = await res.json()
+        is_favorite = data.movies.some(m => m._id.toString() === movie_id)
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function update_btn() {
+    try{
+        const btn = document.getElementById("fav_btn")
+        if(!btn){
+            return
+        }
+
+        btn.innerHTML = is_favorite ? `<i class="fa-solid fa-bookmark"></i>` : `<i class="fa-regular fa-bookmark"></i>`
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function toggle_favorite() {
+    try{
+        if(is_favorite){
+            await fetch(`/api/fav_movies/${movie_id}`,{
+                method:"DELETE",
+                credentials:"include"
+            })
+            is_favorite = false
+        }
+        else{
+            await fetch(`/api/fav_movies`,{
+                method:"POST",
+                credentials:"include",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({movie_id})
+            })
+            is_favorite = true
+        }
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
+
 async function show(){
     try{
-        const params = new URLSearchParams(window.location.search)
-        const id = params.get("id")
         const container = document.getElementById("about_movie")
 
-        if(!id){
+        if(!movie_id){
             container.innerHTML = "<h2>Movie Not Found</h2>"
             return
         }
 
-        const res = await fetch(`/api/movies/${id}`, {credentials: "include"})
+        const res = await fetch(`/api/movies/${movie_id}`, {credentials: "include"})
         const object = await res.json()
 
         if(!object){
@@ -42,8 +93,19 @@ async function show(){
             <div class="main_block">
                 <div class=main1>
                     <img src="${image}" alt="${object.title}">
-                    <div>
-                        <div class="title"><p class="rating">${object.rating}</p><p class="t">${object.title}</p></div>
+                    <div class="col1">
+                        <div class="title1">
+                            <div class="title">
+                                <p class="rating">${object.rating}</p>
+                                <p class="t">${object.title}</p>
+                            </div>
+                            <div class="fav">
+                                <button id="fav_btn" onclick="toggle_favorite()"
+                                    style="background:none;border:none;cursor:pointer;font-size:24px;">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="info1">
                             <div><span class="shr">release year:</span> <span class="sha">${object.release_year}</span></div>
                             <div><span class="shr">country:</span> <span class="sha">${object.country}</span></div>
@@ -58,6 +120,8 @@ async function show(){
                 </div>
             </div>
         `
+
+        await check_favorite()
     }catch{
         document.getElementById("about_movie").innerHTML = "Failed to load movie"
     }

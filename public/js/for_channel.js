@@ -43,7 +43,10 @@ async function show(){
             <div class="chan1">
                 <img src="${image}" alt="${object.title}">
                 <div class="chan2">
-                    <div class="head_title">${object.title}</div>
+                    <div class="tit">
+                        <div class="head_title">${object.title}</div>
+                        <div class="fav"><i class="fa-regular fa-bookmark"></i></div>
+                    </div>
                     <div class="chan3">
                         <span class="ob">Category: <b>${object.category}</b></span>
                         <span class="ob">Country: <b>${object.country}</b></span>

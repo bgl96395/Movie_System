@@ -22,6 +22,11 @@ body{
     display: flex;
     gap: 10px;
     margin-right: 20%;
+    align-items: center;
+}
+
+.op{
+    margin-right: 45% !important;
 }
 
 a{
@@ -518,4 +523,36 @@ textarea::placeholder{
 
 .hidden{
     display: none !important;
+}
+
+#movies{
+    flex:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+    gap:20px;
+    padding: 20px;
+}
+
+#series{
+    flex:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+    gap:20px;
+    padding: 20px;
+}
+
+#cartoons{
+    flex:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+    gap:20px;
+    padding: 20px;
+}
+
+#channels{
+    flex:1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+    gap:20px;
+    padding: 20px;
 }

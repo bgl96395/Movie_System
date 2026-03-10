@@ -43,8 +43,16 @@ async function show(){
             <div class="main_block">
                 <div class=main1>
                     <img src="${image}" alt="${object.title}">
-                    <div>
-                        <div class="title"><p class="rating">${object.rating}</p><p>${object.title}</p></div>
+                    <div class="col1">
+                        <div class="title1">
+                            <div class="title">
+                                <p class="rating">${object.rating}</p>
+                                <p class="t">${object.title}</p>
+                            </div>
+                            <div class="fav">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </div>
+                        </div>
                         <div class="info1">
                             <div><span class="shr">release year:</span> <span class="sha">${object.release_year}</span></div>
                             <div><span class="shr">country:</span> <span class="sha">${object.country}</span></div>

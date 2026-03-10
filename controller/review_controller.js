@@ -63,8 +63,7 @@ exports.leave_review = async (req,res)=>{
             user_id: user.id,
             user_name: user.username,
             comment: comment,
-            created_at: new Date(),
-            updated_at: null
+            created_at: new Date()
         }
 
         const review = await user_review_collection()

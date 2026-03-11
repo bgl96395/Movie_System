@@ -23,11 +23,11 @@ let is_favorite = false
 
 async function check_favorite(){
     try{
-        const res = await fetch("/api/fav_movies",{
+        const res = await fetch(`/api/fav_movies/${movie_id}/check`,{
             credentials:"include"
         })
         const data = await res.json()
-        is_favorite = data.movies.some(m => m._id.toString() === movie_id)
+        is_favorite = data.is_favorite
         update_btn()
     }catch(err){
         console.log(err)

@@ -18,19 +18,69 @@ async function check_role(){
     }
 }
 
+const series_id = new URLSearchParams(window.location.search).get("id")
+let is_favorite = false
+
+async function check_favorite(){
+    try{
+        const res = await fetch(`/api/fav_series/${series_id}/check`,{
+            credentials:"include"
+        })
+        const data = await res.json()
+        is_favorite = data.is_favorite
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function update_btn() {
+    try{
+        const btn = document.getElementById("fav_btn")
+        if(!btn){
+            return
+        }
+
+        btn.innerHTML = is_favorite ? `<i class="fa-solid fa-bookmark"></i>` : `<i class="fa-regular fa-bookmark"></i>`
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function toggle_favorite() {
+    try{
+        if(is_favorite){
+            await fetch(`/api/fav_series/${series_id}`,{
+                method:"DELETE",
+                credentials:"include"
+            })
+            is_favorite = false
+        }
+        else{
+            await fetch(`/api/fav_series`,{
+                method:"POST",
+                credentials:"include",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({series_id})
+            })
+            is_favorite = true
+        }
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
 
 async function show(){
     try{
-        const params = new URLSearchParams(window.location.search)
-        const id = params.get("id")
         const container = document.getElementById("about_series")
 
-        if(!id){
+        if(!series_id){
             container.innerHTML = "<h2>Series Not Found</h2>"
             return
         }
 
-        const res = await fetch(`/api/series/${id}`, {credentials: "include"})
+        const res = await fetch(`/api/series/${series_id}`, {credentials: "include"})
         const object = await res.json()
 
         if(!object){
@@ -50,7 +100,10 @@ async function show(){
                                 <p class="t">${object.title}</p>
                             </div>
                             <div class="fav">
-                                <i class="fa-regular fa-bookmark"></i>
+                                <button id="fav_btn" onclick="toggle_favorite()"
+                                    style="background:none;border:none;cursor:pointer;font-size:24px;">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="info1">
@@ -67,8 +120,9 @@ async function show(){
                 </div>
             </div>
         `
+        await check_favorite()
     }catch{
-        document.getElementById("about_movie").innerHTML = "Failed to load series"
+        document.getElementById("about_series").innerHTML = "Failed to load series"
     }
 }
 

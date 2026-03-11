@@ -1,26 +1,26 @@
 const {ObjectId} = require("mongodb")
-const fav_movies_collection = require("../models/favorite_movie_model")
-const movie_collection = require("../models/movie_model")
+const fav_cartoons_collection = require("../models/favorite_cartoon_model")
+const cartoon_collection = require("../models/cartoon_model")
 
 exports.add_favorite = async (req,res)=>{
     try{
-        const {movie_id} = req.body
+        const {cartoon_id} = req.body
         const user_id = req.session.user.id
         
-        if(!ObjectId.isValid(movie_id)){
+        if(!ObjectId.isValid(cartoon_id)){
             return res.status(400).json({
                 error:"Invalid ID"
             })
         }
 
-        const favorite_movie = await fav_movies_collection().findOne({user_id,movie_id})
-        if(favorite_movie){
+        const favorite_cartoon = await fav_cartoons_collection().findOne({user_id,cartoon_id})
+        if(favorite_cartoon){
             return res.status(400).json({
                 error:"Already in favorites"
             })
         }
 
-        await fav_movies_collection().insertOne({user_id,movie_id})
+        await fav_cartoons_collection().insertOne({user_id,cartoon_id})
         res.status(201).json({
             message:"Added to favorites Successfully"
         })
@@ -44,14 +44,14 @@ exports.get_favorites = async (req,res) =>{
         const limit_num = Number(limit) || 6
         const skip = (page - 1) * limit_num
 
-        const favorite_movies = await fav_movies_collection().find({user_id}).toArray()
-        const movie_ids = await favorite_movies.map(f => new ObjectId(f.movie_id))
+        const favorite_cartoons = await fav_cartoons_collection().find({user_id}).toArray()
+        const cartoon_ids = await favorite_cartoons.map(f => new ObjectId(f.cartoon_id))
 
-        const total = movie_ids.length
+        const total = cartoon_ids.length
         const total_pages = Math.ceil(total/limit_num)
 
-        const movies = await movie_collection().find({_id: {$in: movie_ids}}).skip(skip).limit(limit_num).toArray()
-        res.status(200).json({movies,total_pages})
+        const cartoons = await cartoon_collection().find({_id: {$in: cartoon_ids}}).skip(skip).limit(limit_num).toArray()
+        res.status(200).json({cartoons,total_pages})
     }catch(err){
         console.log(err)
         res.status(500).json({
@@ -62,10 +62,10 @@ exports.get_favorites = async (req,res) =>{
 
 exports.remove_favorite = async (req,res) =>{
     try{
-        const movie_id = req.params.movie_id
+        const cartoon_id = req.params.cartoon_id
         const user_id = req.session.user.id
 
-        await fav_movies_collection().deleteOne({user_id,movie_id})
+        await fav_cartoons_collection().deleteOne({user_id,cartoon_id})
         res.status(200).json({
             message:"Deleted from favorites Successfully"
         })
@@ -80,15 +80,15 @@ exports.remove_favorite = async (req,res) =>{
 exports.checking = async (req,res) =>{
     try{
         const user_id = req.session.user.id
-        const movie_id = req.params.movie_id
+        const cartoon_id = req.params.cartoon_id
 
-        if(!ObjectId.isValid(movie_id)){
+        if(!ObjectId.isValid(cartoon_id)){
             return res.status(400).json({
                 error:"Invalid ID"
             })
         }
 
-        const favorite = await fav_movies_collection().findOne({user_id,movie_id})
+        const favorite = await fav_cartoons_collection().findOne({user_id,cartoon_id})
         res.status(200).json({
             is_favorite: !!favorite
         })

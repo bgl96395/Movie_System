@@ -16,6 +16,9 @@ const channel_route = require("./routes/tv-channel_route")
 const authentification_route = require("./routes/authentification_route")
 const review_route = require("./routes/review_route")
 const fav_movies = require("./routes/favorite_movies_route")
+const fav_series = require("./routes/favorite_series_route")
+const fav_cartoons = require("./routes/favorite_cartoons_route")
+const fav_channels = require("./routes/favorite_channels_route")
 
 const app = express()
 
@@ -32,6 +35,9 @@ app.use(channel_route)
 app.use(authentification_route)
 app.use(review_route)
 app.use(fav_movies)
+app.use(fav_series)
+app.use(fav_cartoons)
+app.use(fav_channels)
 
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/index.html"))

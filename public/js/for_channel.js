@@ -18,19 +18,69 @@ async function check_role(){
     }
 }
 
+const channel_id = new URLSearchParams(window.location.search).get("id")
+let is_favorite = false
+
+async function check_favorite(){
+    try{
+        const res = await fetch(`/api/fav_channels/${channel_id}/check`,{
+            credentials:"include"
+        })
+        const data = await res.json()
+        is_favorite = data.is_favorite
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function update_btn() {
+    try{
+        const btn = document.getElementById("fav_btn")
+        if(!btn){
+            return
+        }
+
+        btn.innerHTML = is_favorite ? `<i class="fa-solid fa-bookmark"></i>` : `<i class="fa-regular fa-bookmark"></i>`
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function toggle_favorite() {
+    try{
+        if(is_favorite){
+            await fetch(`/api/fav_channels/${channel_id}`,{
+                method:"DELETE",
+                credentials:"include"
+            })
+            is_favorite = false
+        }
+        else{
+            await fetch(`/api/fav_channels`,{
+                method:"POST",
+                credentials:"include",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({channel_id})
+            })
+            is_favorite = true
+        }
+        update_btn()
+    }catch(err){
+        console.log(err)
+    }
+}
 
 async function show(){
     try{
-        const params = new URLSearchParams(window.location.search)
-        const id = params.get("id")
         const container = document.getElementById("about_channels")
 
-        if(!id){
+        if(!channel_id){
             container.innerHTML = "<h2>Channel Not Found</h2>"
             return
         }
 
-        const res = await fetch(`/api/tv-channel/${id}`, {credentials: "include"})
+        const res = await fetch(`/api/tv-channel/${channel_id}`, {credentials: "include"})
         const object = await res.json()
 
         if(!object){
@@ -45,7 +95,11 @@ async function show(){
                 <div class="chan2">
                     <div class="tit">
                         <div class="head_title">${object.title}</div>
-                        <div class="fav"><i class="fa-regular fa-bookmark"></i></div>
+                        <div class="fav">
+                            <button id="fav_btn" onclick="toggle_favorite()"style="background:none;border:none;cursor:pointer;font-size:24px;">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="chan3">
                         <span class="ob">Category: <b>${object.category}</b></span>
@@ -63,6 +117,8 @@ async function show(){
                 <div>
             </div>
         `
+
+        await check_favorite()
     }catch{
         document.getElementById("about_channel").innerHTML = "Failed to load channel"
     }

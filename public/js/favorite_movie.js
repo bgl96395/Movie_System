@@ -14,7 +14,7 @@ async function show_fav_movies(){
         })
         const data = await res.json()
 
-        render(data.movies)
+        render_movies(data.movies)
 
         total_pages = data.total_pages || 1
 
@@ -26,7 +26,7 @@ async function show_fav_movies(){
     }
 }
 
-function render(data){
+function render_movies(data){
     const movies = document.getElementById("movies")
     movies.innerHTML = ""
 

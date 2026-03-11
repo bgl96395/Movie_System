@@ -25,7 +25,9 @@ exports.login = async (req,res)=>{
         req.session.user = {
             id: user._id.toString(),
             username: user.username,
-            role: user.role
+            role: user.role,
+            firstname: user.firstname,
+            lastname: user.lastname
         }
 
         res.redirect("/movies")

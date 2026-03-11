@@ -19,6 +19,7 @@ const fav_movies = require("./routes/favorite_movies_route")
 const fav_series = require("./routes/favorite_series_route")
 const fav_cartoons = require("./routes/favorite_cartoons_route")
 const fav_channels = require("./routes/favorite_channels_route")
+const review_movie = require("./routes/review_movie_route")
 
 const app = express()
 
@@ -38,6 +39,7 @@ app.use(fav_movies)
 app.use(fav_series)
 app.use(fav_cartoons)
 app.use(fav_channels)
+app.use(review_movie)
 
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/index.html"))
@@ -91,14 +93,18 @@ app.get("/api/user",(req,res)=>{
         res.json({
             id: req.session.user.id,
             role: req.session.user.role,
-            username: req.session.user.username
+            username: req.session.user.username,
+            firstname: req.session.user.firstname,
+            lastname: req.session.user.lastname
         })
     }
     else{
         res.json({
             id:null,
             role:null,
-            username:null
+            username:null,
+            firstname: null,
+            lastname: null
         })
     }
 })

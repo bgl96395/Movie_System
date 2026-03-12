@@ -66,15 +66,15 @@ function render(data){
         const is_admin = current_user.role === "admin"
         div.innerHTML = `
             <div>
-                <div class="for_dn">${rev.user_name}</div>
-                <p class="for_coms">${rev.comment}</p>
-                <div class="for_dn">${new Date(rev.created_at).toLocaleDateString("en-US", {day: "2-digit",month: "long",year: "numeric"})}</div>
-                <div class=for_btn>
+                <div class="for_dn2">${rev.user_name}</div>
+                <p class="for_coms2">${rev.comment}</p>
+                <div class="for_dn2">${new Date(rev.created_at).toLocaleDateString("en-US", {day: "2-digit",month: "long",year: "numeric"})}</div>
+                <div class=for_btn2>
                     ${is_owner ? `
-                        <button class="green" class="btn_rev" onclick="update_review('${rev._id}','${rev.user_id}')">Edit</button>
+                        <button class="green2" class="btn_rev" onclick="update_review('${rev._id}','${rev.user_id}')">Edit</button>
                     `:""}
                     ${is_admin || is_owner ? `
-                        <button class="red" class="btn_rev" onclick="delete_review('${rev._id}')">Delete</button>
+                        <button class="red2" class="btn_rev" onclick="delete_review('${rev._id}')">Delete</button>
                     `:""}
                 </div>
             </div>

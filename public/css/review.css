@@ -110,22 +110,22 @@ body{
     overflow: hidden;
 }
 
-.for_coms{
+.for_coms2{
     color: white;
 }
 
-.for_dn{
+.for_dn2{
     color: rgb(162, 161, 161);
 }
 
-.for_btn{
+.for_btn2{
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding-top: 10px ;
 }
 
-.red{
+.red2{
     background-color: rgb(158, 4, 4);
     border: 0;
     border-radius: 5px;
@@ -135,12 +135,12 @@ body{
     font-size: 15px;
 }
 
-.red:hover{
+.red2:hover{
     background-color: red;
     color: white;
 }
 
-.green{
+.green2{
     background-color: rgb(115, 171, 31);
     border: 0;
     border-radius: 5px;
@@ -150,7 +150,7 @@ body{
     font-size: 15px;
 }
 
-.green:hover{
+.green2:hover{
     background-color: greenyellow;
 }
 

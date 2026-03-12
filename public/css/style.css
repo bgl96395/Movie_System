@@ -4,6 +4,7 @@ body{
     flex-direction: column;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(13,13,20);
 }
 
 #header{
@@ -207,6 +208,15 @@ input::placeholder{
     font-size: 14px;
 }
 
+select{
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ffffff' stroke-width='2' fill='none' stroke-linecap='round' d='M5 9l7 7 7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
 #filter{
     display: flex;
     padding: 25px;
@@ -216,8 +226,7 @@ input::placeholder{
     margin-right: auto;
     margin-bottom: 40px;
     border-radius: 20px;
-    background: #ffffff;
-    border: 1px solid #f0f0f0;
+    background-color: #272732;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -227,7 +236,8 @@ input::placeholder{
     max-width: 1fr;
     padding: 15px;
     border-radius: 10px;
-    background: #f7f7f9;
+    background-color: #191921;
+    color: white;
 }
 
 label{
@@ -247,6 +257,7 @@ select{
     margin-left:50px ;
     margin-bottom: 20px;
     margin-top: 70px;
+    color:white
 }
 
 #main{
@@ -352,6 +363,7 @@ select{
     padding: 5px;
     font-size: 40px;
     cursor: pointer;
+    color: white;
 }
 
 #creating{
@@ -365,8 +377,13 @@ select{
     padding: 10px;
     gap:20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
-    border: 3px solid #f0f0f0;
+    background-color: #272732;
     border-radius: 10px;
+    color: white;
+}
+
+h2{
+    color: white;
 }
 
 #updating{
@@ -380,8 +397,9 @@ select{
     padding: 10px;
     gap:20px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
-    border: 3px solid #f0f0f0;
+    background-color: #272732;
     border-radius: 10px;
+    color: white;
 }
 
 .create_head{
@@ -406,7 +424,9 @@ select{
 .cont input{
     border-radius: 5px;
     border: 1px solid #d4d3d3;
-    background-color: #fcfcfc;
+    background-color: #595656;
+    font-family: Arial, Helvetica, sans-serif;
+    color:white
 }
 
 .contr input::placeholder{
@@ -421,8 +441,10 @@ select{
 
 .contr input{
     border-radius: 5px;
-    background-color: #fcfcfc;
+    background-color: #595656;
     border: 1px solid #d4d3d3;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 .in{
@@ -438,8 +460,10 @@ select{
 
 textarea{
     border-radius: 5px;
-    background-color: #fcfcfc;
+    background-color: #595656;
     border: 1px solid #d4d3d3;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 textarea::placeholder{

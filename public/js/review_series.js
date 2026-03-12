@@ -55,7 +55,6 @@ function render(data){
                         <button class="red" class="btn_rev" onclick="delete_review('${rev._id}')">Delete</button>
                     `:""}
                 </div>
-                <hr>
             </div>
         `
         reviews.appendChild(div)

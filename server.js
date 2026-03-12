@@ -20,6 +20,7 @@ const fav_series = require("./routes/favorite_series_route")
 const fav_cartoons = require("./routes/favorite_cartoons_route")
 const fav_channels = require("./routes/favorite_channels_route")
 const review_movie = require("./routes/review_movie_route")
+const review_series = require("./routes/review_series_route")
 
 const app = express()
 
@@ -40,6 +41,7 @@ app.use(fav_series)
 app.use(fav_cartoons)
 app.use(fav_channels)
 app.use(review_movie)
+app.use(review_series)
 
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"/views/index.html"))

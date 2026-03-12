@@ -117,7 +117,7 @@ exports.delete_review = async (req,res)=>{
             })
         }
 
-        if(review.user_id !== user_id){
+        if(review.user_id !== user_id && req.session.user.role !== "admin"){
             return res.status(403).json({
                 error:"Not allowed"
             })

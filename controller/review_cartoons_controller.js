@@ -1,12 +1,12 @@
 const {ObjectId} = require("mongodb")
-const review_series_collection = require("../models/review_series_model")
-const series_collection = require("../models/series_model")
+const review_cartoon_collection = require("../models/review_cartoon_model")
+const cartoon_collection = require("../models/cartoon_model")
 
 exports.show_review = async (req,res) =>{
     try{
-        const {series_id} = req.params
-        const review_series = await review_series_collection().find({series_id}).toArray()
-        res.status(200).json(review_series)
+        const {cartoon_id} = req.params
+        const review_cartoons = await review_cartoon_collection().find({cartoon_id}).toArray()
+        res.status(200).json(review_cartoons)
     }catch(err){
         console.log(err)
         res.status(500).json({
@@ -18,7 +18,7 @@ exports.show_review = async (req,res) =>{
 exports.create_review = async (req,res)=>{
     try{
         const {comment} = req.body
-        const {series_id} = req.params
+        const {cartoon_id} = req.params
         const user = req.session.user
 
         if(!comment){
@@ -29,20 +29,20 @@ exports.create_review = async (req,res)=>{
 
         const review = {
             user_id:user.id,
-            series_id: series_id,
+            cartoon_id: cartoon_id,
             firstname: user.firstname,
             lastname: user.lastname,
             comment: comment,
             created_at: new Date()
         }
 
-        const series = await series_collection().findOne({_id: new ObjectId(series_id)})
-        if(!series){
+        const cartoon = await cartoon_collection().findOne({_id: new ObjectId(cartoon_id)})
+        if(!cartoon){
             return res.status(404).json({
-                error:"Movie not found"
+                error:"Cartoon not found"
             })
         }
-        await review_series_collection().insertOne(review)
+        await review_cartoon_collection().insertOne(review)
         res.status(201).json({
             message:"Created Successfully"
         })
@@ -57,7 +57,7 @@ exports.create_review = async (req,res)=>{
 exports.update_review = async (req,res) =>{
     try{
         const {comment} = req.body
-        const {id, series_id} = req.params
+        const {id, cartoon_id} = req.params
         const user_id = req.session.user.id
 
         if(!comment){
@@ -66,14 +66,14 @@ exports.update_review = async (req,res) =>{
             })
         }
 
-        const exist = await series_collection().findOne({_id: new ObjectId(series_id)})
+        const exist = await cartoon_collection().findOne({_id: new ObjectId(cartoon_id)})
         if(!exist){
             return res.status(404).json({
-                error:"Series not found"
+                error:"Cartoon not found"
             })
         }
 
-        const review = await review_series_collection().findOne({_id:new ObjectId(id)})
+        const review = await review_cartoon_collection().findOne({_id:new ObjectId(id)})
         if(!review){
             return res.status(404).json({
                 error:"Review not found"
@@ -86,7 +86,7 @@ exports.update_review = async (req,res) =>{
             })
         }
 
-        await review_series_collection().updateOne({_id:new ObjectId(id)},{$set:{comment}})
+        await review_cartoon_collection().updateOne({_id:new ObjectId(id)},{$set:{comment}})
         res.status(200).json({
             message:"Updated Successfully"
         })
@@ -100,17 +100,17 @@ exports.update_review = async (req,res) =>{
 
 exports.delete_review = async (req,res)=>{
     try{
-        const {id, series_id} = req.params
+        const {id, cartoon_id} = req.params
         const user_id = req.session.user.id
 
-        const exist = await series_collection().findOne({_id: new ObjectId(series_id)})
+        const exist = await cartoon_collection().findOne({_id: new ObjectId(cartoon_id)})
         if(!exist){
             return res.status(404).json({
-                error:"Series not found"
+                error:"Cartoon not found"
             })
         }
 
-        const review = await review_series_collection().findOne({_id:new ObjectId(id)})
+        const review = await review_cartoon_collection().findOne({_id:new ObjectId(id)})
         if(!review){
             return res.status(404).json({
                 error:"Review not found"
@@ -123,7 +123,7 @@ exports.delete_review = async (req,res)=>{
             })
         }
 
-        await review_series_collection().deleteOne({_id: new ObjectId(id)})
+        await review_cartoon_collection().deleteOne({_id: new ObjectId(id)})
         res.status(200).json({
             message:"Deleted Successfully"
         })

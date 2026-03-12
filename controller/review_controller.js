@@ -140,7 +140,7 @@ exports.delete_review = async (req,res)=>{
             })
         }
 
-        if(review.user_id.toString() !== req.session.user.id.toString()){
+        if(review.user_id.toString() !== req.session.user.id.toString() && req.session.user.role !== "admin"){
             return res.status(403).json({
                 error:"Access denied"
             })

@@ -41,6 +41,7 @@ function render(data){
         div.classList.add("com")
 
         const is_owner = current_user && current_user.id === rev.user_id
+        const is_admin = current_user.role === "admin"
         div.innerHTML = `
             <div>
                 <div class="for_dn">${rev.firstname} ${rev.lastname}</div>
@@ -49,6 +50,8 @@ function render(data){
                 <div class=for_btn>
                     ${is_owner ? `
                         <button class="green" class="btn_rev" onclick="update_review('${rev._id}','${rev.user_id}')">Edit</button>
+                    `:""}
+                    ${is_owner || is_admin ? `
                         <button class="red" class="btn_rev" onclick="delete_review('${rev._id}')">Delete</button>
                     `:""}
                 </div>

@@ -4,6 +4,6 @@ module.exports = ({
     saveUninitialized: false,
     cookie: {
         httpOnly:true,
-        secure:true,
+        secure:false,
     }
 })

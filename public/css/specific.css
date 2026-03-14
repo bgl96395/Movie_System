@@ -315,3 +315,188 @@ body{
     width: 90%;
     margin-top: 40px;
 }
+
+@media (max-width: 1024px) {
+  .main_block {
+    width: 70%;
+  }
+
+  #comment_forms {
+    width: 72%;
+  }
+
+  .chan1 {
+    width: 80%;
+  }
+
+  .chan1 img {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  #options2 {
+    margin-right: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main_block {
+    width: 85%;
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  .main1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .main1 img {
+    width: 70%;
+  }
+
+  .info1 {
+    margin-left: 10px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .head_title {
+    font-size: 28px;
+  }
+
+  .chan1 {
+    width: 90%;
+    margin-top: 40px;
+  }
+
+  .chan1 img {
+    height: 350px;
+  }
+
+  .chan3 {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #comment_forms {
+    width: 85%;
+  }
+
+  .green,
+  .red {
+    width: 25%;
+  }
+
+  .com {
+    width: 85%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_block {
+    width: 92%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+  }
+
+  .main1 img {
+    width: 90%;
+  }
+
+  .col1 {
+    width: 100%;
+  }
+
+  .title {
+    flex-direction: column;
+    font-size: 14px;
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  .tit {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info1 {
+    margin-left: 5px;
+    gap: 15px;
+  }
+
+  .head_title {
+    font-size: 22px;
+  }
+
+  .chan1 {
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .chan1 img {
+    height: 220px;
+  }
+
+  .chan3 {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .chan2 {
+    padding-left: 10px;
+  }
+
+  #comment_forms {
+    width: 92%;
+    gap: 20px;
+    padding: 8px;
+  }
+
+  #commentss {
+    max-width: 90%;
+    min-width: 90%;
+  }
+
+  .com {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .for_btn {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .green,
+  .red {
+    width: 60%;
+    height: 36px;
+  }
+
+  .but {
+    width: 10%;
+  }
+
+  .fav {
+    font-size: 20px;
+  }
+
+  .rating {
+    font-size: 13px;
+  }
+}

@@ -249,6 +249,12 @@ select{
     border: 0;
     background-color: transparent;
     cursor: pointer;
+    padding: 5px;
+}  
+
+.filt select, .filt select option {
+    color: white !important;
+    background-color: #191921 !important;
 }
 
 .main_header{
@@ -579,4 +585,235 @@ textarea::placeholder{
     grid-template-columns: repeat(auto-fill,minmax(380px,1fr));
     gap: 20px;
     padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  #watching {
+    width: 70%;
+  }
+
+  #foot1 {
+    width: 25%;
+  }
+
+  #foot2 {
+    width: 50%;
+  }
+
+  #soc {
+    width: 40%;
+  }
+
+  #rights {
+    width: 90%;
+  }
+
+  #creating,
+  #updating {
+    width: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  #header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #options {
+    margin-right: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .op {
+    margin-right: 0 !important;
+  }
+
+  #search_of {
+    width: 250px;
+  }
+
+  #main,
+  #movies,
+  #tv-series,
+  #cartoons {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  #channel_main,
+  #channels {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .for_image img {
+    height: 300px;
+  }
+
+  #watching {
+    width: 90%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #filter {
+    flex-direction: column;
+    width: 85%;
+    gap: 12px;
+  }
+
+  .main_header {
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+
+  #creating,
+  #updating {
+    width: 85%;
+  }
+
+  .cont {
+    flex-direction: column;
+  }
+
+  .cont label {
+    width: 100%;
+  }
+
+  .delete-btn {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #foot1 {
+    width: 40%;
+  }
+
+  #foot2 {
+    width: 70%;
+  }
+
+  #soc {
+    width: 60%;
+  }
+
+  #rights {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  #options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  #search_of {
+    width: 90vw;
+  }
+
+  #logout {
+    font-size: 14px;
+  }
+
+  #main,
+  #movies,
+  #tv-series,
+  #cartoons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #channel_main,
+  #channels {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .for_image img {
+    height: 220px;
+  }
+
+  .for_ch_image img {
+    height: 180px;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  #watching {
+    width: 95%;
+  }
+
+  .z1 {
+    font-size: 22px;
+  }
+
+  .z4 {
+    font-size: 16px;
+  }
+
+  .main_header {
+    font-size: 22px;
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+
+  #filter {
+    width: 92%;
+    padding: 15px;
+  }
+
+  #creating,
+  #updating {
+    width: 92%;
+  }
+
+  .delete-btn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .delete-btn-for-channel {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  #foot1 {
+    width: 70%;
+    font-size: medium;
+  }
+
+  #foot2 {
+    width: 90%;
+    font-size: medium;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  #soc {
+    width: 80%;
+  }
+
+  #rights {
+    width: 95%;
+    font-size: 12px;
+  }
 }

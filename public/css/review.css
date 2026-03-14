@@ -154,3 +154,136 @@ body{
     background-color: greenyellow;
 }
 
+@media (max-width: 1024px) {
+  #rev {
+    width: 60%;
+    margin-left: 40px;
+  }
+
+  #coms {
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+  }
+
+  #user_name {
+    width: 30%;
+  }
+
+  #rev_btn {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  #rev {
+    width: 80%;
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+
+  .h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .h0 {
+    font-size: 18px;
+  }
+
+  #user_name {
+    width: 40%;
+    font-size: 14px;
+  }
+
+  #rev_btn {
+    width: 40%;
+    font-size: 17px;
+  }
+
+  #coms {
+    grid-template-columns: repeat(2, 1fr);
+    width: 95%;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  #h2 {
+    font-size: 22px;
+    margin-left: 20px;
+  }
+
+  #h3 {
+    font-size: 15px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #rev {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+
+  .h1 {
+    font-size: 22px;
+  }
+
+  .h0 {
+    font-size: 16px;
+  }
+
+  #user_name {
+    width: 60%;
+    font-size: 13px;
+  }
+
+  #comments {
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  #rev_btn {
+    width: 60%;
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 40px;
+  }
+
+  #coms {
+    grid-template-columns: 1fr;
+    width: 95%;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .comm {
+    padding: 15px;
+    gap: 25px;
+    border-radius: 14px;
+  }
+
+  .for_btn2 {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .red2,
+  .green2 {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  #h2 {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  #h3 {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+}

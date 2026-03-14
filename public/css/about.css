@@ -192,3 +192,221 @@ body{
     color: rgb(141, 139, 139);
     font-size: 19px;
 }
+
+@media (max-width: 1024px) {
+  #h1 {
+    width: 88%;
+  }
+
+  .h1_1 {
+    font-size: 38px;
+  }
+
+  .h1_2 {
+    font-size: 24px;
+  }
+
+  #h2 {
+    width: 88%;
+  }
+
+  .h2_1 {
+    font-size: 38px;
+    width: 75%;
+  }
+
+  .h2_2_1,
+  .h2_2_2,
+  .h2_3_1,
+  .h2_3_2 {
+    font-size: 20px;
+    gap: 25px;
+  }
+
+  .h3 {
+    font-size: 38px;
+    margin-top: 120px;
+  }
+
+  .h4 {
+    width: 88%;
+  }
+
+  .ico {
+    font-size: 38px;
+  }
+
+  .h4_2 {
+    font-size: 20px;
+  }
+
+  .h4_3 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  #h1 {
+    width: 92%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+
+  .h1_1 {
+    font-size: 28px;
+  }
+
+  .h1_2 {
+    font-size: 18px;
+  }
+
+  #h2 {
+    width: 92%;
+  }
+
+  .h2_1 {
+    font-size: 28px;
+    width: 90%;
+  }
+
+  .h2_2,
+  .h2_3 {
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .h2_2_1,
+  .h2_2_2,
+  .h2_3_1,
+  .h2_3_2 {
+    width: 100%;
+    font-size: 18px;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .photo img {
+    height: 230px;
+  }
+
+  .h3 {
+    font-size: 28px;
+    margin-top: 80px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .h4 {
+    width: 92%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ico {
+    font-size: 32px;
+  }
+
+  .h4_2 {
+    font-size: 18px;
+  }
+
+  .h4_3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #h1 {
+    width: 95%;
+    padding-top: 12%;
+    padding-bottom: 12%;
+    border-radius: 14px;
+  }
+
+  .h1_1 {
+    font-size: 22px;
+  }
+
+  .h1_1 img {
+    width: 36px;
+  }
+
+  .h1_2 {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  #h2 {
+    width: 95%;
+    border-radius: 14px;
+  }
+
+  .h2_1 {
+    font-size: 22px;
+    width: 95%;
+    padding: 10px 0;
+  }
+
+  .h2_2,
+  .h2_3 {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .h2_2_1,
+  .h2_2_2,
+  .h2_3_1,
+  .h2_3_2 {
+    font-size: 15px;
+    gap: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 14px;
+  }
+
+  .ic {
+    font-size: 24px;
+  }
+
+  .photo {
+    padding: 10px;
+  }
+
+  .photo img {
+    width: 95%;
+    height: 170px;
+    border-radius: 12px;
+  }
+
+  .h3 {
+    font-size: 22px;
+    margin-top: 50px;
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  .h4 {
+    width: 95%;
+    gap: 12px;
+  }
+
+  .h4_1 {
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 30px;
+    border-radius: 14px;
+  }
+
+  .ico {
+    font-size: 26px;
+  }
+
+  .h4_2 {
+    font-size: 16px;
+  }
+
+  .h4_3 {
+    font-size: 13px;
+  }
+}

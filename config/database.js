@@ -9,7 +9,7 @@ async function connectDB(){
     try{
         await client.connect()
         console.log("MongoDB connected")
-        database = client.db("MovieSystem")
+        database = client.db("movie_system")
     }catch(err){
         console.error("Failed to connect MongoDB:",err)
     }
